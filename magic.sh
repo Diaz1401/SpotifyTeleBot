@@ -15,11 +15,11 @@ if [[ $3 == "" ]]; then
 fi
 
 if [[ $2 == "flac" ]]; then #flac
-        ./spotdl "$1" --format flac
+        ./spotdl "$1" --format flac --bitrate 320k
 elif [[ $2 == "m4a" ]]; then #m4a
-        ./spotdl "$1" --format m4a
+        ./spotdl "$1" --format m4a --bitrate 320k
 elif [[ $2 == "mp3" ]]; then #mp3
-        ./spotdl "$1"
+        ./spotdl "$1" --bitrate 320k
 elif [[ $2 == "-sc" ]]; then # soundcloud
         scdl -l "$1"
         MUSIC=$(ls | grep .mp3)
