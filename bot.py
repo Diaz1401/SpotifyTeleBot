@@ -2,6 +2,7 @@ import os
 import telebot
 import fnmatch
 import asyncio
+import glob
 from telebot.async_telebot import AsyncTeleBot
 
 botToken = os.environ['token']
@@ -61,7 +62,11 @@ async def download_flac(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.flac"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.flac"
         os.system(cleansong)
     elif str.find("album")!=-1 or str.find("playlist")!=-1:
         print("is album or playlist")
@@ -72,7 +77,11 @@ async def download_flac(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.flac"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.flac"
         os.system(cleansong)
     else:
         print("is maybe query")
@@ -84,7 +93,11 @@ async def download_flac(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.flac"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.flac"
         os.system(cleansong)
 
 @bot.message_handler(commands=['mp3'])
@@ -101,7 +114,11 @@ async def download_mp3(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.mp3"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.mp3"
         os.system(cleansong)
     elif str.find("album")!=-1 or str.find("playlist")!=-1:
         print("is album or playlist")
@@ -112,7 +129,11 @@ async def download_mp3(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.mp3"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.mp3"
         os.system(cleansong)
     else:
         print("is maybe query")
@@ -124,7 +145,11 @@ async def download_mp3(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.mp3"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.mp3"
         os.system(cleansong)
 
 @bot.message_handler(commands=['m4a'])
@@ -141,7 +166,11 @@ async def download_mp3(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.m4a"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.m4a"
         os.system(cleansong)
     elif str.find("album")!=-1 or str.find("playlist")!=-1:
         print("is album or playlist")
@@ -152,7 +181,11 @@ async def download_mp3(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.m4a"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.m4a"
         os.system(cleansong)
     else:
         print("is maybe query")
@@ -164,7 +197,11 @@ async def download_mp3(message):
         f = open("link.txt", "r")
         text = f.read()
         await bot.send_message(chat_id, text)
-        cleansong = "rm -rf link.txt"
+        for file in glob.glob("*.m4a"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.m4a"
         os.system(cleansong)
 
 @bot.message_handler(commands=['sc'])
@@ -176,10 +213,14 @@ async def download_soundcloud(message):
     await bot.reply_to(message, "Fetching song from link...")
     DownloadSong = "bash magic.sh {} -sc -x".format(realSong)
     os.system(DownloadSong)
-    f = open("link.txt", "r")
-    text = f.read()
-    await bot.send_message(chat_id, text)
-    cleansong = "rm -rf link.txt"
+        f = open("link.txt", "r")
+        text = f.read()
+        await bot.send_message(chat_id, text)
+        for file in glob.glob("*.mp3"):
+            print(file)
+            audio = open(file, 'rb')
+            await bot.send_audio(chat_id, audio)
+        cleansong = "rm -rf *.mp3"
     os.system(cleansong)
 
 asyncio.run(bot.infinity_polling())
