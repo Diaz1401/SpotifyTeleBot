@@ -1,3 +1,5 @@
+#!/usr/bin/env .venv/bin/python
+
 import os
 import telebot
 import fnmatch
