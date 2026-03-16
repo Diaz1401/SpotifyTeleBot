@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-sudo apt-get install ffmpeg python3-pip -y
-pip3 install -r requirements.txt
+sudo apt install ffmpeg python3-venv -y
+python3 -m venv .venv
+./.venv/bin/pip install -r requirements.txt
