@@ -215,14 +215,14 @@ async def download_soundcloud(message):
     await bot.reply_to(message, "Fetching song from link...")
     DownloadSong = "bash magic.sh {} -sc -x".format(realSong)
     os.system(DownloadSong)
-        f = open("link.txt", "r")
-        text = f.read()
-        await bot.send_message(chat_id, text)
-        for file in glob.glob("*.mp3"):
-            print(file)
-            audio = open(file, 'rb')
-            await bot.send_audio(chat_id, audio)
-        cleansong = "rm -rf *.mp3"
+    f = open("link.txt", "r")
+    text = f.read()
+    await bot.send_message(chat_id, text)
+    for file in glob.glob("*.mp3"):
+        print(file)
+        audio = open(file, 'rb')
+        await bot.send_audio(chat_id, audio)
+    cleansong = "rm -rf *.mp3"
     os.system(cleansong)
 
 asyncio.run(bot.infinity_polling())
